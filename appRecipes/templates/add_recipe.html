@@ -1,0 +1,18 @@
+<!-- add_recipe.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить рецепт</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить новый рецепт</h1>
+        <form method="post" action="{{ url_for('add_recipe') }}">
+            <input type="text" name="name" placeholder="Название рецепта" required><br>
+            <textarea name="description" placeholder="Описание рецепта" required></textarea><br>
+            <input type="submit" value="Добавить рецепт">
+        </form>
+    </div>
+</body>
+</html>

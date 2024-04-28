@@ -1,0 +1,30 @@
+<!-- recipe.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ recipe.name}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ recipe.name | safe}}</h1>
+        <p>{{ recipe.description }}</p>
+        
+        <h2>Комментарии</h2>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.name }}</strong>: {{ comment.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Добавить комментарий</h2>
+        <form method="post" action="{{ url_for('add_comment', recipe_id=recipe.id) }}">
+            <input type="text" name="user" placeholder="Ваше имя" required><br>
+            <textarea name="text" placeholder="Текст комментария" required></textarea><br>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+</body>
+</html>
